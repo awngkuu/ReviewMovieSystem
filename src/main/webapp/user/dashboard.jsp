@@ -3,17 +3,17 @@
 <%@ page session="true" %>
 <%
     // 🔐 Prevent browser caching
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
-    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
-    response.setDateHeader("Expires", 0); // Proxies
-
-    // 🔒 Session validation
-    User user = (User) session.getAttribute("user");
-    String role = (String) session.getAttribute("role");
-    if (user == null || role == null) {
-        response.sendRedirect("login.jsp");
-        return;
-    }
+//    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+//    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+//    response.setDateHeader("Expires", 0); // Proxies
+//
+//    // 🔒 Session validation
+//    User user = (User) session.getAttribute("user");
+//    String role = (String) session.getAttribute("role");
+//    if (user == null || role == null) {
+//        response.sendRedirect("login.jsp");
+//        return;
+//    }
 %>
 <!DOCTYPE html>
 <html lang="en">
