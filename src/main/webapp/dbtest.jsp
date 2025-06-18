@@ -1,6 +1,4 @@
-<%@ page import="java.sql.Connection" %>
-<%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.*" %>
 <%@ page import="dao.DBConnection" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,38 +18,34 @@
             if (conn != null && !conn.isClosed()) {
     %>
                 <p style="color: green;">✅ Connection successful!</p>
-                <h3>Users Table Data:</h3>
+                <h3>All Data from 'users' Table:</h3>
                 <%
                     try {
                         stmt = conn.createStatement();
                         rs = stmt.executeQuery("SELECT * FROM users");
 
+                        ResultSetMetaData metaData = rs.getMetaData();
+                        int columnCount = metaData.getColumnCount();
+
                         if (!rs.isBeforeFirst()) {
                 %>
-                            <p>No users found in the table.</p>
+                            <p>No data found in the 'users' table.</p>
                 <%
                         } else {
                 %>
                             <table border="1" cellpadding="5" cellspacing="0">
                                 <tr>
-                                    <th>User ID</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
+                                    <% for (int i = 1; i <= columnCount; i++) { %>
+                                        <th><%= metaData.getColumnLabel(i) %></th>
+                                    <% } %>
                                 </tr>
-                <%
-                            while (rs.next()) {
-                                int id = rs.getInt("user_id");
-                                String username = rs.getString("username");
-                                String email = rs.getString("email");
-                %>
-                                <tr>
-                                    <td><%= id %></td>
-                                    <td><%= username %></td>
-                                    <td><%= email %></td>
-                                </tr>
-                <%
-                            }
-                %>
+                                <% while (rs.next()) { %>
+                                    <tr>
+                                        <% for (int i = 1; i <= columnCount; i++) { %>
+                                            <td><%= rs.getString(i) %></td>
+                                        <% } %>
+                                    </tr>
+                                <% } %>
                             </table>
                 <%
                         }
