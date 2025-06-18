@@ -11,7 +11,7 @@ public class UserDAO {
     public UserDAO() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/movie_review_system", "root", "");
+            conn = DBConnection.getConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
