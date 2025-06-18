@@ -57,7 +57,7 @@
     <h3 class="text-xl font-semibold mb-4 text-gray-300">Quick Actions</h3>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <% if ("admin".equals(role)) { %>
-        <a href="/movieReviewSystem/MovieServlet?action=list"
+        <a href="<%= request.getContextPath() %>/MovieServlet?action=list"
            class="bg-red-600 hover:bg-red-700 text-white text-center py-3 rounded-lg font-semibold transition">
            🎬 Manage Movies
         </a>
@@ -66,11 +66,11 @@
            👥 Manage Users
         </a>
       <% } else { %>
-        <a href="/movieReviewSystem/MovieServlet?action=list"
+        <a href="<%= request.getContextPath() %>/MovieServlet?action=list"
            class="bg-red-600 hover:bg-red-700 text-white text-center py-3 rounded-lg font-semibold transition">
            🎬 Browse Movies
         </a>
-        <a href="/movieReviewSystem/UserServlet?action=delete"
+        <a href="<%= request.getContextPath() %>/UserServlet?action=delete"
            onclick="return confirm('Are you sure you want to delete your profile? This cannot be undone.');"
            class="bg-gray-700 hover:bg-red-700 text-white text-center py-3 rounded-lg font-semibold transition">
            ❌ Delete Profile
