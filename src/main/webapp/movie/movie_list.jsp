@@ -104,7 +104,7 @@
                 for (Movie movie : movieList) {
         %>
         <tr>
-            <td><%= movie.getPosterUrl() %></td>
+            <td><img src="<%= movie.getPosterUrl() != null ? movie.getPosterUrl() : "#" %>" alt="Poster" width="200"/></td>
             <td><%= movie.getTitle() %></td>
             <td><%= movie.getGenre() %></td>
             <td><%= movie.getReleaseDate() %></td>
