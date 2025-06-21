@@ -92,6 +92,7 @@
 
     <table>
         <tr>
+            <th>Poster</th>
             <th>Title</th>
             <th>Genre</th>
             <th>Release Date</th>
@@ -103,6 +104,7 @@
                 for (Movie movie : movieList) {
         %>
         <tr>
+            <td><%= movie.getPosterUrl() %></td>
             <td><%= movie.getTitle() %></td>
             <td><%= movie.getGenre() %></td>
             <td><%= movie.getReleaseDate() %></td>
