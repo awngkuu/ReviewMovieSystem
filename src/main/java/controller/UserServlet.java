@@ -193,7 +193,7 @@ public class UserServlet extends HttpServlet {
                 boolean deleted = userDAO.deleteUser(user.getUserId());
                 if (deleted) {
                     session.invalidate();
-                    response.sendRedirect("/movieReviewSystem/user/login.jsp");
+                    response.sendRedirect("/user/login.jsp");
                 } else {
                     request.setAttribute("error", "Failed to delete profile.");
                     request.getRequestDispatcher("/user/profile.jsp").forward(request, response);
